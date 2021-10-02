@@ -1,0 +1,22 @@
+\mode<presentation>
+
+% Requirement
+\RequirePackage{tikz}
+\RequirePackage{microtype}
+\RequirePackage{ragged2e}
+\RequirePackage{xpatch}
+
+% Settings
+\useinnertheme{chapote}
+\useoutertheme{chapote}
+\usecolortheme{chapote}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]  
+
+\setbeamersize{text margin left=13mm}
+
+\AtBeginEnvironment{frame}{\setcounter{footnote}{0}}
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+\mode<all>

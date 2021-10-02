@@ -1,0 +1,62 @@
+\mode<presentation>
+
+\setbeamerfont{title}{size=\Huge,series=\rm\bfseries}
+\setbeamerfont{frametitle}{size*={16pt}{19.2},series=\rm\bfseries}
+\setbeamerfont{date}{size*={8pt}{9.6}}
+\setbeamerfont{institute}{size*={8pt}{9.6},}
+\setbeamerfont{footnote}{size*={6pt}{7.2},series=\rm}
+\setbeamerfont{itemize/enumerate body}{size*={15pt}{18}}
+
+% \setbeamerfont{footnote mark}{size*={6pt}{7.2},series=\rm}
+
+% Title page
+\defbeamertemplate*{title page}{chapote}[1][]
+{ 
+  % test: \setbeamercolor{title page header}{bg=yellow}
+  \vspace{8mm}\\
+    \begin{beamercolorbox}[wd=102mm,left,#1]{title page header}
+      \usebeamerfont{title}\RaggedRight\inserttitle%
+    \end{beamercolorbox}%
+    \vskip8mm%
+    \setlength{\fboxsep}{0pt}
+    \setlength{\fboxrule}{0pt}
+    \framebox[102mm]{
+    \begin{beamercolorbox}[wd=52mm,#1]{author}
+      \usebeamerfont{author}\insertauthor%
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=50mm,#1]{institute}
+      \usebeamerfont{institute}\RaggedRight\insertinstitute%
+    \end{beamercolorbox}}
+  \vskip5mm%
+    \begin{beamercolorbox}[wd=52mm\linewidth,#1]{date}
+      \usebeamerfont{date}\insertdate%
+    \end{beamercolorbox}
+  \vfill
+}
+
+% Frame title
+\defbeamertemplate*{frametitle}{chapote}[1][]{
+  \vspace{8mm}\\
+    \begin{beamercolorbox}[wd=102mm,left,#1]{frametitle}
+      \insertframetitle\par%
+    \end{beamercolorbox}%
+   \vspace{-10pt}
+}
+
+\setbeamertemplate{itemize items}{•}
+\setbeamertemplate{enumerate items}[default]
+\setlength{\leftmargini}{10pt} 
+
+\xpatchcmd{\itemize}
+  {\def\makelabel}
+  {\setlength{\itemsep}{4mm}\def\makelabel}
+  {}
+  {}
+  
+\renewcommand\footnoterule{\hrule width25mm}
+\setbeamertemplate{footline}{
+    \vspace{4mm}
+  }
+  
+\mode
+<all>

@@ -1,0 +1,43 @@
+#+LANGUAGE: british
+#+OPTIONS: H:2 toc:nil *:t ':t ’:t ":t
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [t,xcolor=dvipsnames]
+#+BEAMER_THEME: chapote
+#+BEAMER_COLOR_THEME:
+#+BEAMER_FONT_THEME:
+#+BEAMER_INNER_THEME:
+#+BEAMER_OUTER_THEME:
+#+startup: beamer
+#+BEAMER_HEADER: \usefonttheme{professionalfonts}
+#+BEAMER_HEADER: \usefonttheme{structurebold}
+#+BEAMER_HEADER: \usepackage{fontspec}
+#+BEAMER_HEADER: \setsansfont{Bligh}
+#+BEAMER_HEADER: \setmainfont[Numbers={OldStyle},UprightFont=*-Regular, ItalicFont=*-Italic,  BoldFont=*-Bold,]{Bressay}
+#+BEAMER_HEADER: \usepackage[english]{babel}
+#+BEAMER_HEADER: \usepackage[backend=bibtex8,natbib=true,doi=false]{biblatex}\addbibresource{lacatoda.bib}
+#+BEAMER_HEADER:\bibliographystyle{apalike}
+
+#+BEAMER_HEADER: \date[ReInAct-2021]{Reasoning and Interaction (ReInAct) 2021}
+#+BEAMER_HEADER: \author[V. Maraev et al.]{\alert{Vladislav Maraev}\\ Ellen Breitholtz\\ Christine Howes \\ Jean-Philippe Bernardy}
+#+BEAMER_HEADER: \institute{Centre for Linguistic Theory and Studies in Probability (CLASP), Department of Philosophy, Linguistics and Theory of Science, University of Gothenburg}
+
+#+TITLE: Why should I turn left? Towards active explainability for spoken dialogue systems
+
+* Test
+** Explainability: active vs passive
+- It is social: we are 30 times more likely to laugh in presence of others.
+- Kids laugh before they learn to speak; laughter can be informative
+  about their development.[fn::Provine, R. R. (2004). Laughing, tickling, and the evolution of speech and self. Current Directions in Psychological Science, 13(6):215–218]
+- bububullets
+- bullet with *alert*
+** And another 
+- ??? [fn::Provine, R. R. (2004). Laughing, tickling, and the evolution of speech and self. Current Directions in Psychological Science, 13(6):215–218]
+- [fn::fullcite:atkey_syntax_2018]
+* ---
+** References
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks,label=
+:END:  
+(see Readings on the course page)
+
+@@latex: \scriptsize @@
