@@ -1,29 +1,145 @@
 #+LANGUAGE: british
-#+OPTIONS: H:2 toc:nil *:t ':t ’:t ":t
+#+OPTIONS: H:2 toc:nil *:t ':t ’:t ":t title:nil
 #+LATEX_CLASS: beamer
 #+LATEX_CLASS_OPTIONS: [t,xcolor=dvipsnames]
-#+BEAMER_THEME: chapote
-#+BEAMER_COLOR_THEME:
-#+BEAMER_FONT_THEME:
-#+BEAMER_INNER_THEME:
-#+BEAMER_OUTER_THEME:
 #+startup: beamer
-#+BEAMER_HEADER: \usefonttheme{professionalfonts}
-#+BEAMER_HEADER: \usefonttheme{structurebold}
-#+BEAMER_HEADER: \usepackage{fontspec}
-#+BEAMER_HEADER: \setsansfont{Bligh}
-#+BEAMER_HEADER: \setmainfont[Numbers={OldStyle},UprightFont=*-Regular, ItalicFont=*-Italic,  BoldFont=*-Bold,]{Bressay}
-#+BEAMER_HEADER: \usepackage[english]{babel}
-#+BEAMER_HEADER: \usepackage[backend=bibtex8,natbib=true,doi=false]{biblatex}\addbibresource{lacatoda.bib}
-#+BEAMER_HEADER:\bibliographystyle{apalike}
+#+LATEX_HEADER: \usefonttheme{professionalfonts}
+#+LATEX_HEADER: \usefonttheme{structurebold}
+#+LATEX_HEADER: \usetheme{chapote}
+#+LATEX_HEADER: \usepackage{mathspec}
+#+LATEX_HEADER: \defaultfontfeatures{Path={\string~/.local/share/polytextum/fonts/}}
+#+LATEX_HEADER: \setmainfont[Numbers={OldStyle},UprightFont=*-Regular, ItalicFont=*-Italic,  BoldFont=*-Bold,]{Bressay}
 
-#+BEAMER_HEADER: \date[ReInAct-2021]{Reasoning and Interaction (ReInAct) 2021}
-#+BEAMER_HEADER: \author[V. Maraev et al.]{\alert{Vladislav Maraev}\\ Ellen Breitholtz\\ Christine Howes \\ Jean-Philippe Bernardy}
-#+BEAMER_HEADER: \institute{Centre for Linguistic Theory and Studies in Probability (CLASP), Department of Philosophy, Linguistics and Theory of Science, University of Gothenburg}
+#+LATEX_HEADER: \setsansfont[UprightFont=*-Regular,  BoldFont=*-Bold]{Bligh}
+#+LATEX_HEADER: \setmathrm[UprightFont=*-Regular,  BoldFont=*-Bold]{Bligh}
+#+LATEX_HEADER: %include polycode.fmt
+#+LATEX_HEADER: %format -* = "\rightarrowtriangle"
+# alternative:                 -{\kern -1.3ex}*
+#+LATEX_HEADER: %format !-> = "\rightarrow_{!}"
+#+LATEX_HEADER: %format ?-> = "\rightarrow_{?}"
+#+LATEX_HEADER: %format . = "."
+#+LATEX_HEADER: %format \_ = "\_"
+#+LATEX_HEADER: %let operator = "."
+#+LATEX_HEADER: \usepackage{newunicodechar}
+#+LATEX_HEADER: \input{newunicodedefs}
+
+#+LATEX_HEADER: \usepackage[english]{babel}
+#+LATEX_HEADER: \usepackage[backend=bibtex8,natbib=true,doi=false]{biblatex}\addbibresource{lacatoda.bib}\addbibresource{bib.bib}\addbibresource{incred.bib}
+# #+LATEX_HEADER:\bibliographystyle{apalike}
+
+#+LATEX_HEADER:\setbeamertemplate{blocks}[default]
+#+LATEX_HEADER: \AtBeginSection[]{\begin{frame}<beamer>[noframenumbering,plain]\frametitle{Next...}\tableofcontents[currentsection]\end{frame}}
+
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+#+LATEX_HEADER: \date[ReInAct-2021]{Reasoning and Interaction (ReInAct) 2021}
+#+LATEX_HEADER: \author[V. Maraev et al.]{\alert{Vladislav Maraev}\\ Ellen Breitholtz\\ Christine Howes \\ Jean-Philippe Bernardy}
+#+LATEX_HEADER: \institute{Centre for Linguistic Theory and Studies in Probability (CLASP), Department of Philosophy, Linguistics and Theory of Science, University of Gothenburg}
 
 #+TITLE: Why should I turn left? Towards active explainability for spoken dialogue systems
 
-* Test
+** COMMENT
+:PROPERTIES:
+:BEAMER_opt: plain
+:END:
+@@beamer:\setbeamerfont{title}{size*={24pt}{32.2},series=\rm\bfseries}\titlepage@@
+
+* Motivation
+:PROPERTIES:
+:UNNUMBERED: t
+:END:
+** How dialogue systems can explain their decisions?
+*** 
+:PROPERTIES:
+:BEAMER_env: exampleblock
+:END:
+  #+ATTR_LaTeX: :environment tabularx :width \linewidth :center nil :align @@{}lL@@{}
+  | Sys: | Turn right at the next junction                                                      |
+  | Usr: | Why?                                                                                 |
+  | Sys: | There is an accident ahead causing delays. I suggest going through the city instead. |
+
+** Explainability: active and passive
+#+ATTR_BEAMER: :overlay <+->
+- passive :: developer or researcher analyses and interprets system's
+  internal state (cf. "Explainable AI")
+- active :: let the system *speak* for itself, and explain its own
+  choices
+\pause
+*** 
+We need to explore how humans do it in real interactions 
+** What we did?
+#+ATTR_BEAMER: :overlay <+->
+- We based our approach to reasoning on the notions of *enthymemes* and
+  *topoi*.
+- We extended our own proof-theoretic dialogue management framework
+  with support for *active explainability*.
+
+*  Reasoning in dialogue
+** Artificial agents fail
+*** from interaction with Siri on 14.01.2020
+:PROPERTIES:
+:BEAMER_env: exampleblock
+:END:
+#+ATTR_LaTeX: :environment tabularx :width \linewidth :center nil :align @@{}lL@@{}
+| User: | How old is President Trump?                           |
+| Siri: | President Trump is 73 years old.                      |
+| User: | How old is President Macron?                          |
+| Siri: | President Macron is 42 years old.                     |
+| User: | Is President Trump older than President Macron?       |
+| Siri: | Here is what I found on the web...                    |
+|       | [displays irrelevant web links about Brigitte Macron] |
+** Humans do it better
+*** [BNC KBE 10554-10561]
+:PROPERTIES:
+:BEAMER_env: exampleblock
+:END:
+#+ATTR_LaTeX: :environment tabularx :width \linewidth :center nil :align @@{}lL@@{}
+| Dave: | (...) you’re gonna be home from football until four, you gonna have your dinner, want a bath.  |
+| Lee:  | Yeah, but I might not go to school tomorrow.                                                  |
+| Dave: | Why?                                                                                          |
+| Lee:  | Cos of my cough.                                                                             |
+| Dave: | How can you play football and not go to school then?                                          |
+| Lee:  | Cos I was going out in the fresh air, I’m alright when I’m out in the fresh air.              |
+| Dave: | So why aren’t you going to school then?                                                       |
+| Lee:  | I’m in the classroom all day dad.                                                             |
+** How people interactively reason in natural dialogue?
+#+ATTR_BEAMER: :overlay <+->
+- it involves "non-logical" common sense reasoning
+- *enthymeme*, "rhetorical syllogism", conclusion doesn't follow by necessity
+- enthymeme is negotiable and cancellable
+** Topoi
+*Dave:  How can you play football and not go to school then?*
+
+#+ATTR_BEAMER: :overlay <+->
+- Dave's utterance is underpinned by the general principle -- *topos* (pl. *topoi*).
+- discussed in connection with rhetoric and argumentation[fn::fullcite:toulmin2003]
+- part of linguistic meaning and discourse cohesion[fn::fullcite:ducrot1988]
+
+* Linear logic
+** Linear logic
+- hypotheses may be used only once: 
+  #+BEGIN_code
+  IsAt x Valand y ⊸ 
+    IsAt x CentralStationen (y+45 min)
+  #+END_code
+
+- unrestricted implication (|->|) still remains, for immutable facts
+  #+BEGIN_code
+  Hungry Vlad -> Eat Vlad IceCream ⊸ 
+    Happy Vlad
+  #+END_code
+
+To our knowledge citet:dixon2009plans were the first to advocate the
+use of linear logic for dialogue management and planning (but no
+domain-generality and ISU).
+
+*  Dialogue management (DM)
+
+*  Enthymematic reasoning in DM
+
+*  Discussion / conclusions
+
 ** Explainability: active vs passive
 - It is social: we are 30 times more likely to laugh in presence of others.
 - Kids laugh before they learn to speak; laughter can be informative
@@ -33,11 +149,5 @@
 ** And another 
 - ??? [fn::Provine, R. R. (2004). Laughing, tickling, and the evolution of speech and self. Current Directions in Psychological Science, 13(6):215–218]
 - [fn::fullcite:atkey_syntax_2018]
-* ---
-** References
-:PROPERTIES:
-:BEAMER_opt: allowframebreaks,label=
-:END:  
-(see Readings on the course page)
 
-@@latex: \scriptsize @@
+

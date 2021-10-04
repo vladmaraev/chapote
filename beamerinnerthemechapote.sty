@@ -1,11 +1,17 @@
 \mode<presentation>
 
-\setbeamerfont{title}{size=\Huge,series=\rm\bfseries}
+\setbeamerfont{title}{size*={24pt}{26.2},series=\rm\bfseries}
 \setbeamerfont{frametitle}{size*={16pt}{19.2},series=\rm\bfseries}
 \setbeamerfont{date}{size*={8pt}{9.6}}
 \setbeamerfont{institute}{size*={8pt}{9.6},}
 \setbeamerfont{footnote}{size*={6pt}{7.2},series=\rm}
 \setbeamerfont{itemize/enumerate body}{size*={15pt}{18}}
+\setbeamerfont{description body}{size*={15pt}{18}}
+\setbeamerfont{block body}{size*={15pt}{18}}
+\setbeamerfont{block title}{size*={15pt}{18}}
+\setbeamerfont{block title example}{size*={6pt}{7.2},series=\rm}
+\setbeamerfont{footline}{size*={8pt}{9.6},series=\rm\bfseries}
+\setbeamerfont{hscode}{size*={8pt}{9.6},}
 
 % \setbeamerfont{footnote mark}{size*={6pt}{7.2},series=\rm}
 
@@ -15,7 +21,7 @@
   % test: \setbeamercolor{title page header}{bg=yellow}
   \vspace{8mm}\\
     \begin{beamercolorbox}[wd=102mm,left,#1]{title page header}
-      \usebeamerfont{title}\RaggedRight\inserttitle%
+      \usebeamerfont{title}\inserttitle%
     \end{beamercolorbox}%
     \vskip8mm%
     \setlength{\fboxsep}{0pt}
@@ -36,13 +42,14 @@
 
 % Frame title
 \defbeamertemplate*{frametitle}{chapote}[1][]{
-  \vspace{8mm}\\
+  \vskip8mm
     \begin{beamercolorbox}[wd=102mm,left,#1]{frametitle}
       \insertframetitle\par%
     \end{beamercolorbox}%
-   \vspace{-10pt}
+    \vspace{0pt}
 }
 
+\setbeamertemplate{blocks}[default]
 \setbeamertemplate{itemize items}{•}
 \setbeamertemplate{enumerate items}[default]
 \setlength{\leftmargini}{10pt} 
@@ -52,11 +59,19 @@
   {\setlength{\itemsep}{4mm}\def\makelabel}
   {}
   {}
+
   
 \renewcommand\footnoterule{\hrule width25mm}
-\setbeamertemplate{footline}{
-    \vspace{4mm}
+  
+\defbeamertemplate*{footline}{chapote}[1][]{
+  \vspace{2mm}
+  \begin{beamercolorbox}[wd=115mm,right,#1]{framenumber}
+    \insertframenumber%
+  \end{beamercolorbox}
+  \vspace{2mm}
   }
+
+
   
 \mode
 <all>
